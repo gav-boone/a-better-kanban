@@ -39,7 +39,20 @@ export default function Column({ title, tasks, id}) {
                     position:'stick',
                 }}
             >{title}</Title>
+            <Droppable droppableId={id}>
+                {(provided, snapshot) => {
+                    <TaskList
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                        isDraggingOver={snapshot.isDragginOver}
+                    >
+                        {/*TODO: Provide tasks here*/}
 
+                        {provided.placeholder}
+                    </TaskList>;
+                }}
+
+            </Droppable>
 
         </Container>
     );
